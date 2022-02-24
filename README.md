@@ -23,10 +23,20 @@
 ## **s3BucketOwnership**
 ### This script helps to automate the implementation of the recently added Object ownership access control issue usually encountered when a cross account role/user adds a new file to a Bucket without the "--acl bucket-owner-full-control" flag.
 
-## Running this script would loop through all the Buckets in your AWS account and enforce the rule.
+### Running this script would loop through all the Buckets in your AWS account and enforce the rule.
 
 
 ## **s3BucketPolicy**
 ### Sometimes in AWS environment, we want to deny access to an S3 Bucket for all other IAM roles/users except for specific roles. This is possible by following this template.
 
 ### With this, the administrator is able to block all roles not listed within the bucket policy.
+
+
+## **s3BucketProvisioning**
+### The Terraform version 4 upgrade recently broke the process of creating the s3 service. Follow this provided template within the s3provisioning* folder guides administraotr on easily provisioning Buckets with features like:
+### - Private access
+### - Encryption
+### - Lifecycle configuration
+### - Analytics configuration
+### - Bucket ownership enforcement
+### - Tagging configuration and many others.
