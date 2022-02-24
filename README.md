@@ -20,3 +20,13 @@
 ## **This Repository**
 ### This repository contains an absrtaciton of my experience with the S3 service. Feel free to raise an issue if you find a problem with my approach.
 
+## **s3BucketOwnership**
+### This script helps to automate the implementation of the recently added Object ownership access control issue usually encountered when a cross account role/user adds a new file to a Bucket without the "--acl bucket-owner-full-control" flag.
+
+## Running this script would loop through all the Buckets in your AWS account and enforce the rule.
+
+
+## **s3BucketPolicy**
+### Sometimes in AWS environment, we want to deny access to an S3 Bucket for all other IAM roles/users except for specific roles. This is possible by following this template.
+
+### With this, the administrator is able to block all roles not listed within the bucket policy.
