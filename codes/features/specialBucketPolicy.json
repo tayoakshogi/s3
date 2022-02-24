@@ -1,0 +1,73 @@
+{
+  "Version": "2012-10-17",
+  "Id": "freeStyles3Policy",
+  "Statement": [
+    {
+      "Sid": "FullAccessAdmin",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::bucket-name",
+        "arn:aws:s3:::bucket-name/*"
+      ],
+      "Condition": {
+        "StringNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::90391000000:role/role1",
+            "arn:aws:iam::90391000000:role/role2",
+            "arn:aws:iam::90391000000:role/role3"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "FullAccessAdmin1",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::90391000000:role/role1",
+          "arn:aws:iam::90391000000:role/role2"
+        ]
+      },
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::bucket-name",
+        "arn:aws:s3:::bucket-name/*"
+      ]
+    },
+    {
+      "Sid": "ReadAccessAdmin1",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::90391000000:role/role3"
+        ]
+      },
+      "Action": [
+        "s3:Get*",
+        "s3:List*"
+      ],
+      "Resource": [
+        "arn:aws:s3:::bucket-name",
+        "arn:aws:s3:::bucket-name/*"
+      ]
+    },
+    {
+      "Sid": "DenyWriteAccessAdmin1",
+      "Effect": "Deny",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::90391000000:role/role3"
+        ]
+      },
+      "Action": [
+        "s3:Put*"
+      ],
+      "Resource": [
+        "arn:aws:s3:::bucket-name/*",
+        "arn:aws:s3:::bucket-name"
+      ]
+    }
+  ]
+}
